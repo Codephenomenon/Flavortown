@@ -1,0 +1,109 @@
+/*
+ * #26A69A - primary blue
+ * #1C86D9 - secondary blue
+ * #283640 - tertiary black/blue
+ * #CDD6D5 - gray
+*/
+
+*,
+*::before,
+*::after {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: inherit;
+}
+
+/* Responsive design */
+html {
+  font-size: 62.5%;
+  font-family: 'Rubik', sans-serif;
+}
+@media only screen and (min-width: 93.75em) {
+  font-size: 62.5%;
+}
+@media only screen and (max-width: 75em) {
+  font-size: 56.25%;
+}
+@media only screen and (max-width: 56.25em) {
+  font-size: 50%;
+}
+@media only screen and (max-width: 37.5em) {
+  font-size: 40%;
+}
+
+.appcontain {
+  max-width: 120rem;
+}
+
+/* Input styling */
+
+.inputcontain {
+  margin: 1rem 0rem;
+}
+
+/* Recipe List styling */
+.recipelist {
+  background: #283640;
+  position: relative;
+  height: 70rem;
+  padding: 0.3rem !important;
+  overflow: auto;
+}
+
+.recipeitem {
+  margin: 0 auto;
+  height: 10rem;
+}
+
+.recipeitem-img {
+  max-height: 8rem;
+  min-width: 8rem;
+  height: 100%;
+}
+
+.recipeitem-text {
+  position: relative;
+  float: right;
+  width: 20rem;
+  height: 8rem;
+  text-align: left;
+}
+
+.recipeitem-text p {
+  font-size: 1.5rem;
+}
+
+.center-align {
+  display: flex;
+  justify-content: center;
+}
+
+.recipelist__loader {
+  margin-top: 2.5rem;
+  font-size: 12rem !important;
+  color: #FFF;
+}
+/* Active Recipe styling */
+
+.activeitem {
+  height: 70rem;
+}
+
+.activeitem__img {
+  height: 35rem;
+  background: black;
+}
+
+.activeitem__toolbar {
+  height: 5rem;
+  background: orange;
+}
+
+.activeitem__toolbar--btn {
+
+}
+
+.activeitem__list {
+  height: 30rem;
+  background: #CDD6D5;
+}
