@@ -26,11 +26,16 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div className="row inputcontain">
-        <div className="input-group col-md-6 col-md-offset-3">
-          <input type="text" className="form-control inputcontain__input" placeholder="Search Recipes..." onChange={this.onInputChange} value={this.state.input} />
+      <div className="centered row">
+        <div className="eight wide column inputcontain">
+          <div className="ui input focus">
+            <input type="text" placeholder="Search Recipes..." onChange={this.onInputChange} value={this.state.input} />
+          </div>
           <span className="input-group-btn">
-            <button className="btn btn-primary" onClick={this.handleClick} >check</button>
+            <button className="ui animated primary button" onClick={this.handleClick} >
+              <div className="visible content">Search</div>
+              <div className="hidden content"><i className="right arrow icon"></i></div>
+            </button>
           </span>
         </div>
       </div>

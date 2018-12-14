@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { setActiveRecipe } from '../actions/index.js';
 
 class RecipeList extends Component {
+
+  onRecipeSelect(recipe) {
+    console.log(recipe);
+  }
 
   renderList() {
     function limitChars(title, limit = 25) {
@@ -13,7 +19,6 @@ class RecipeList extends Component {
           }
           return acc + curr.length;
         }, 0);
-        console.log(newTitle);
         return `${newTitle.join(' ')}...`;
       } else {
         return title;
@@ -22,40 +27,47 @@ class RecipeList extends Component {
 
     return this.props.data.recipes.map(recipe => {
       return (
-        <li key={recipe.recipe_id} className="list-group-item recipeitem">
-          <img src={recipe.image_url} className="img-thumbnail recipeitem-img" alt={recipe.title} />
-          <div className="recipeitem-text">
-            <p>{limitChars(recipe.title)}</p>
+        <li key={recipe.recipe_id} className="item recipeitem" onClick={() => this.onRecipeSelect(recipe)}>
+          <img src={recipe.image_url} className="ui tiny bordered image" />
+          <div className="content">
+            <p className="header">{limitChars(recipe.title)}</p>
+            <div className="description">rating: {recipe.social_rank.toFixed(2)}</div>
           </div>
         </li>
       );
     });
   }
 
-  renderStart() {
-    return (
-      <div>
-        Hello World!
-      </div>
-    );
+  renderComponent() {
+    if (this.props.data.loading === true) {
+      return (
+        <div className="loadcontain ui segment">
+          <div className="nobackground ui active inverted dimmer">
+            <div className="ui massive text loader">Loading...</div>
+          </div>
+        </div>
+      );
+    } else {
+      if (this.props.data.recipes.length) {
+        return (
+          this.renderList()
+        );
+      } else {
+        return (
+          <div>
+            Hello World!
+          </div>
+        );
+      }
+    }
   }
 
   render() {
-    if (this.props.data.loading === true) {
-      return (
-        <ul className="col-md-4 recipelist">
-          <div className="center-align">
-            <i className="fa fa-circle-o-notch fa-spin recipelist__loader"></i>
-          </div>
-        </ul>
-      );
-    } else {
-      return (
-        <ul className="col-md-4 list-group recipelist">
-          {this.props.data.recipes.length ? this.renderList() : this.renderStart()}
-        </ul>
-      );
-    }
+    return (
+      <div className="four wide column recipelist">
+        {this.renderComponent()}
+      </div>
+    );
   }
 }
 
@@ -65,4 +77,8 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(RecipeList);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ setActiveRecipe }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecipeList);

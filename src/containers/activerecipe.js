@@ -10,7 +10,7 @@ class ActiveRecipe extends Component {
 
   render() {
     return (
-      <div className="col-md-8 activeitem">
+      <div className="eight wide column activeitem">
         <div className="activeitem__img">
         </div>
         <div className="activeitem__toolbar">

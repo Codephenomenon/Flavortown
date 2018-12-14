@@ -7,9 +7,9 @@ import ActiveRecipe from '../containers/activerecipe.js';
 export default class App extends Component {
   render() {
     return (
-      <div className="container-fluid appcontain">
+      <div className="ui grid">
         <SearchBar />
-        <div className="row">
+        <div className="centered row">
           <RecipeList />
           <ActiveRecipe />
         </div>

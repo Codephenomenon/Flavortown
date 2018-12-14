@@ -38,65 +38,85 @@ html {
 /* Input styling */
 
 .inputcontain {
-  margin: 1rem 0rem;
+  display: flex !important;
+  margin-top: 1rem !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputcontain input {
+  width: 20rem
 }
 
 /* Recipe List styling */
 .recipelist {
-  background: #283640;
+  background: rgba(39,84,185,0.7);
+  box-shadow: 0.2rem 0.2rem 0.3rem rgba(0,0,0,0.7);
   position: relative;
   height: 70rem;
   padding: 0.3rem !important;
   overflow: auto;
 }
 
+.recipelist ul {
+  margin-left: 0 !important;
+}
+
 .recipeitem {
-  margin: 0 auto;
-  height: 10rem;
-}
-
-.recipeitem-img {
-  max-height: 8rem;
-  min-width: 8rem;
-  height: 100%;
-}
-
-.recipeitem-text {
+  height: 5rem;
+  margin: 2px 0;
+  overflow: hidden;
+  display: flex !important;
+  align-items: center;
   position: relative;
-  float: right;
-  width: 20rem;
-  height: 8rem;
-  text-align: left;
+  z-index: 0;
 }
 
-.recipeitem-text p {
-  font-size: 1.5rem;
+.recipeitem:hover::before {
+  transform: scaleX(1);
 }
 
-.center-align {
-  display: flex;
-  justify-content: center;
+.recipeitem::before {
+  position: absolute;
+  content: '';
+  width: 150%;
+  z-index: -1;
+  background-color: #FFF;
+  height: 5rem;
+  transition: all 0.6s ease;
+  transform: scaleX(0);
+  opacity: 0.2;
+  transform-origin: left;
+  clip-path: polygon(0 0, 85% 0, 75% 100%, 0% 100%);
 }
 
-.recipelist__loader {
-  margin-top: 2.5rem;
-  font-size: 12rem !important;
-  color: #FFF;
+.loadcontain {
+  height: 100%;
+  background: rgba(39,84,185,0.7) !important;
 }
+
+.nobackground {
+  background: none !important;
+  background-color: transparent !important;
+}
+
 /* Active Recipe styling */
 
 .activeitem {
   height: 70rem;
 }
 
+
 .activeitem__img {
   height: 35rem;
-  background: black;
+  box-shadow: 0.2rem 0.2rem 0.3rem rgba(0,0,0,0.4);
+  border: 2px solid #C1C0BB;
 }
 
 .activeitem__toolbar {
   height: 5rem;
-  background: orange;
+  background: #F0EEE8;
+  box-shadow: 0.2rem 0.2rem 0.3rem rgba(0,0,0,0.4);
 }
 
 .activeitem__toolbar--btn {
@@ -105,5 +125,6 @@ html {
 
 .activeitem__list {
   height: 30rem;
-  background: #CDD6D5;
+  background: #C1C0BB;
+  box-shadow: 0.2rem 0.2rem 0.3rem rgba(0,0,0,0.4);
 }

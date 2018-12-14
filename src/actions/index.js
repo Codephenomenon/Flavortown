@@ -17,3 +17,10 @@ export function setLoading() {
     type: 'RECIPEES_LOADING'
   };
 }
+
+export function setActiveRecipe(recipe) {
+  return {
+    type: 'SET_ACTIVE',
+    payload: recipe
+  };
+}
