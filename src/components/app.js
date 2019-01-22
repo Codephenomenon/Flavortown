@@ -9,7 +9,7 @@ export default class App extends Component {
     return (
       <div className="ui grid">
         <SearchBar />
-        <div className="centered row">
+        <div className="centered row appcontain">
           <RecipeList />
           <ActiveRecipe />
         </div>

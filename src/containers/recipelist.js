@@ -6,7 +6,7 @@ import { setActiveRecipe } from '../actions/index.js';
 class RecipeList extends Component {
 
   onRecipeSelect(recipe) {
-    console.log(recipe);
+    this.props.setActiveRecipe(recipe);
   }
 
   renderList() {
@@ -26,10 +26,11 @@ class RecipeList extends Component {
     }
 
     return this.props.data.recipes.map(recipe => {
+      recipe.isLiked = false;
       return (
         <li key={recipe.recipe_id} className="item recipeitem" onClick={() => this.onRecipeSelect(recipe)}>
           <img src={recipe.image_url} className="ui tiny bordered image" />
-          <div className="content">
+          <div className="listContent">
             <p className="header">{limitChars(recipe.title)}</p>
             <div className="description">rating: {recipe.social_rank.toFixed(2)}</div>
           </div>
@@ -54,8 +55,10 @@ class RecipeList extends Component {
         );
       } else {
         return (
-          <div>
-            Hello World!
+          <div className="introText">
+            Welcome to Flavortown!
+            Get started by searching some recipees,
+            add recipees you like and build a list.
           </div>
         );
       }
