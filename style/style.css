@@ -164,6 +164,24 @@ html {
 .activeitem__list-likedList {
   display: flex;
   height: 30rem;
+  width: 100%;
   flex-flow: column;
   list-style: none;
+}
+
+.activeitem__list-likedList li {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.activeitem__list-likedList li h2 {
+  flex: 0 0 100%;
+  padding-left: 5px;
+  padding-top: 2px;
+}
+
+.activeitem__list-likedList li span {
+  flex: 0 0 40%;
+  padding: 0 5px;
 }
